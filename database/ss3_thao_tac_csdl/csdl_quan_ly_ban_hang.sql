@@ -27,4 +27,25 @@ insert into order_detail (oID, pID, adQTY) values
 (2, 3, 3);
 
 -- Hiển thị các thông tin  gồm oID, oDate, oPrice của tất cả các hóa đơn trong bảng Order--
-select 
+select o.oID as oid, o.oDate as oDate, sum(od.adQTY * p.pPrice) as oprice
+from `order` o
+join order_detail od on o.oID = od.oID
+join product p on od.pID = p.pID
+group by o.oID, o.oDate;
+
+-- Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách--
+select c.cName, p.pName, od.adQTY
+from customer c
+join `order` o on c.cID = o.cID
+join order_detail od on o.oID = od.oID
+join product p on od.pID = p.pID;
+
+-- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào--
+select c.cName
+from customer c
+left join `order` o on c.cID = o.cID
+where o.oID is null;
+
+-- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn 
+-- (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn. 
+-- Giá bán của từng loại được tính = odQTY*pPrice)
