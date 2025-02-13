@@ -28,3 +28,5 @@ create table order_detail (
     foreign key (oID) references `order`(oID),
     foreign key (pID) references product(pID)
 );
+
+alter table order_detail add column adQTY int;
