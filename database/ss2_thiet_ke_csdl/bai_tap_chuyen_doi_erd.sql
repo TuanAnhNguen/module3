@@ -28,6 +28,10 @@ create table don_dat_hang (
     ngayDH date not null
 );
 
+-- Thêm mối quan hệ giữa nha_cung_cap và don_dat_hang
+alter table don_dat_hang add column maNCC int;
+alter table don_dat_hang add constraint foreign key (maNCC) references nha_cung_cap (maNCC);
+
 create table chi_tiet_phieu_xuat (
 	soPX int not null,
     dgXuat int not null,
