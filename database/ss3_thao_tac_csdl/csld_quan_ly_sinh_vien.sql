@@ -36,6 +36,34 @@ create table mark(
         FOREIGN KEY (studentId) REFERENCES student (studentId)
  );
  
+insert into class (className, startDate, Status) values
+('Class A', '2023-09-01', 1),
+('Class B', '2023-09-01', 1),
+('Class C', '2023-09-01', 1),
+('Class D', '2023-09-01', 1),
+('Class E', '2023-09-01', 1);
+
+insert into student (studentName, address, phone, Status, classId) values
+('Nguyen Van A', 'Hanoi', '0123456789', 1, 1),
+('Tran Thi B', 'Ho Chi Minh', '0987654321', 1, 2),
+('Le Van C', 'Da Nang', '0345678901', 1, 3),
+('Pham Thi D', 'Hai Phong', '0567890123', 1, 4),
+('Hoang Van E', 'Can Tho', '0678901234', 1, 5);
+
+insert into `subject` (subName, credit, Status) values
+('Toán', 3, 1),
+('Vật lý', 4, 1),
+('Hóa học', 3, 1),
+('Sinh học', 2, 1),
+('Lịch sử', 3, 1);
+
+insert into mark (subId, studentId, mark, examTimes) values
+(1, 1, 85, 1),
+(2, 2, 90, 1),
+(3, 3, 78, 1),
+(4, 4, 88, 1),
+(5, 5, 92, 1);
+ 
  -- Hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’--
  select * from student where name like '% % h%';
  
@@ -50,8 +78,26 @@ create table mark(
  
  -- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần.--
  -- nếu trùng sắp theo tên tăng dần.--
- select s.studentName, sub.subName, m.mark 
- from mark m
- join student s on m.studentId = s.studentId
- join `subject` sub on m.subId = sub.subId
- order by m.mark desc, s.studentName asc;
+select s.studentName, sub.subName, m.mark 
+from mark m
+join student s on m.studentId = s.studentId
+join `subject` sub on m.subId = sub.subId
+order by m.mark desc, s.studentName asc;
+ 
+ -- Bài 4: Các hàm thông dụng trong SQL
+ -- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.-- 
+select * from `subject`
+where credit = (select max(credit) from `subject`);
+ 
+ -- Hiển thị các thông tin môn học có điểm thi lớn nhất.--
+select * from `subject` s
+join mark m on s.subId = m.subId
+where m.mark = (select max(mark) from mark);
+
+-- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên,
+-- xếp hạng theo thứ tự điểm giảm dần--
+select s.studentId, s.studentName, s.address, s.phone, s.classId, avg(m.mark) as avg_mark 
+from student s
+join mark m on s.studentId = m.studentId
+group by s.studentId, s.studentName, s.address, s.phone, s.classId
+order by avg_mark desc;

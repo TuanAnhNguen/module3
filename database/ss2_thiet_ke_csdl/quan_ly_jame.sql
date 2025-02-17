@@ -133,3 +133,41 @@ join class c on s.class_id = c.id
 where c.name = 'c1121g1' 
 order by s.point desc, s.name asc;
 
+-- Câu 1:	Hiện thị danh sách các lớp có học viên theo học và số lượng học viên của mỗi lớp--
+select c.name as class_name, count(s.id) as so_luong
+from class c
+join student s on s.class_id = c.id
+group by c.id;
+
+
+-- Câu 2. Tính điểm lớn nhất của mỗi các lớp--
+select c.name as class_name, max(s.point) as diem_lon_nhat
+from class c
+join student s on s.class_id = c.id
+group by c.id;
+
+-- Câu 3.Tính điểm trung bình của từng lớp --
+select c.name as class_name, avg(s.point) as diem_trung_binh
+from class c
+join student s on s.class_id = c.id
+group by c.id;
+
+-- Câu 4 Lấy ra toàn bộ tên và ngày sinh các instructor và student ở CodeGym--
+select `name`, birthday from student
+union all 
+select `name`, birthday from instructor;
+
+-- Câu 5: Lấy ra top 3 học viên có điểm cao nhất của trung tâm.--
+select * from student
+order by point desc
+limit 3;
+
+-- Câu 6: Lấy ra các học viên có điểm số là cao nhất của trung tâm.-- 
+select * from student
+where point = (select max(point) from student);
+
+-- Câu 7: lấy ra tất cả các giảng viên chưa từng tham gia giảng dạy--
+select id, name
+from instructor
+left join instructor_class on instructor.id = instructor_class.instructor_id
+where instructor_class.class_id is null;
