@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: "Times New Roman", Time, serif;
+            margin: 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+        .desc {
+            padding: 10px;
+            text-align: center;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .gallery-item {
+            padding: 0 6px;
+            overflow: hidden;
+        }
+        p{
+            padding: 6px;
+            margin-top: 10px;
+        }
+        .gallery a:hover {
+            opacity: 0.8;
+        }
+        .gallery a:hover img {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .gallery a:hover .gallery-item {
+            border: 1px solid #777;
+        }
+        @media only screen and (max-width: 700px) {
+            .gallery-item {
+                max-width: 50%;
+            }
+        }
+        @media only screen and (max-width: 500px) {
+            .gallery-item {
+                max-width: 100%; 
+            }
+        }
+    </style>
+</head>
+<body>
+<h2 class="text-dark fw-bold" style="margin-left: 10px">Responsive Image Gallery</h2>
+<h5 class="fw-bold" style="margin-left: 10px">Resize the browser window to see the effect.</h5>
+<div class="container-fluid  mt-4">
+    <div class="row gallery">
+        <div class="gallery-item col-12 col-md-6 col-lg-3">
+            <a href="https://demo.codegym.vn/web/15/gallery/img_fjords.jpg">
+                <img src="https://demo.codegym.vn/web/15/gallery/img_fjords.jpg" alt="Image 1" width="300" height="200">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+
+        <div class="gallery-item col-12 col-md-6 col-lg-3">
+            <a href="https://demo.codegym.vn/web/15/gallery/img_forest.jpg">
+                <img src="https://demo.codegym.vn/web/15/gallery/img_forest.jpg" alt="Image 2" width="300" height="200">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+
+        <div class="gallery-item col-12 col-md-6 col-lg-3">
+            <a href="https://demo.codegym.vn/web/15/gallery/img_lights.jpg">
+                <img src="https://demo.codegym.vn/web/15/gallery/img_lights.jpg" alt="Image 3" width="300" height="200">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+        <div class="gallery-item col-12 col-md-6 col-lg-3">
+            <a href="https://demo.codegym.vn/web/15/gallery/img_mountains.jpg">
+                <img src="https://demo.codegym.vn/web/15/gallery/img_mountains.jpg" alt="Image 4" width="300" height="200">
+            </a>
+            <div class="desc">Add a description of the image here</div>
+        </div>
+    </div>
+</div>
+<div>
+    <p>This example use media queries to re-arrange the images on different screen sizes: for screens larger than 700px
+        wide, it will show four images side by side, for screens smaller than 700px, it will show two images side by
+        side. For screens smaller than 500px, the images will stack vertically (100%).</p>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</html>
