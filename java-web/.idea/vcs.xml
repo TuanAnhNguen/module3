@@ -2,7 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ss10_jstl/bai_tap/danh_sach_khach_hang/danh_sach_khach_hang" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ss10_jstl/bai_tap/danh_sach_khach_hang" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ss9_tong_quan_web_app/bai_tap/product_discount_calculator" vcs="Git" />
   </component>
 </project>
