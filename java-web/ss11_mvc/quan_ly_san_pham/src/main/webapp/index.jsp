@@ -5,8 +5,8 @@
   <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
+<h1><%= "Quản lý sản phẩm" %></h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="/products">Danh sách sản phẩm</a>
 </body>
 </html>
