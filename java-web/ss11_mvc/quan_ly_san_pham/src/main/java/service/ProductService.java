@@ -6,67 +6,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService implements IProductService {
-    private static List<Product> products = new ArrayList<>();
-    static {
-        products.add(new Product(1, "Laptop", 30000000, "Laptop Nitro 5", "Acer"));
-        products.add(new Product(2, "Iphone 16", 25000000, "Màu trắng", "Apple"));
-        products.add(new Product(3, "Tablet", 20000000, "Máy tính bảng", "Samsung"));
-    }
+    private static ProductService productService = new ProductService();
+//    static {
+//        productService.add(new Product(1, "Laptop", 30000000, "Laptop Nitro 5", "Acer"));
+//        productService.add(new Product(2, "Iphone 16", 25000000, "Màu trắng", "Apple"));
+//        productService.add(new Product(3, "Tablet", 20000000, "Máy tính bảng", "Samsung"));
+//    }
 
 
     @Override
-    public List<Product> getProducts() {
-        return products;
+    public List<Product> findAll() {
+        return productService.findAll();
     }
 
     @Override
-    public boolean addProduct(Product product) {
-        return products.add(product);
+    public boolean add(Product product) {
+        return productService.add(product);
     }
 
     @Override
-    public Product findProductById(int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return product;
-            }
-        }
-        return null;
+    public boolean delete(int id) {
+        return productService.delete(id);
     }
 
     @Override
-    public List<Product> findProductByName(String name) {
-        List<Product> products = new ArrayList<>();
-        for (Product product : products) {
-            if (product.getName().equals(name)) {
-                products.add(product);
-            }
-        }
-        if (products.isEmpty()) {
-            return null;
-        }
-        return products;
+    public boolean update(int id, Product product) {
+        return productService.update(id, product);
     }
 
     @Override
-    public boolean updateProductById(int id, Product product) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == id) {
-                products.set(i, product);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteProductById(int id) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == id) {
-                products.remove(i);
-                return true;
-            }
-        }
-        return false;
+    public List<Product> search(String name) {
+        return productService.search(name);
     }
 }
