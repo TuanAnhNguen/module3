@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>Form nhập sản phẩm</title>
-<%--    <c:import url="/view/layout/library.jsp"/>--%>
 </head>
 <body>
 <c:import url="/view/layout/header.jsp"></c:import>
